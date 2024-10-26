@@ -1,3 +1,6 @@
+import sqlite3
+import json
+
 EMPLOYEES = [
     {
         "id": 1,

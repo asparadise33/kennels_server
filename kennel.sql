@@ -71,3 +71,12 @@ SELECT
     a.customer_id
 FROM animal a
 WHERE a.id = 3
+
+ SELECT
+            a.id,
+            a.name,
+            a.address,
+            a.email,
+            a.password
+        FROM customer a
+        WHERE a.id = 2
