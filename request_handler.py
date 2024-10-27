@@ -1,7 +1,7 @@
 from urllib.parse import urlparse, parse_qs
 from http.server import BaseHTTPRequestHandler, HTTPServer
 import json
-from views import get_all_animals, get_single_animal, get_all_locations, get_single_location, get_single_customer, get_all_customers, get_customer_by_email, get_all_employees, get_single_employee, create_animal, delete_animal, update_animal
+from views import get_all_animals, get_single_animal,get_animal_by_location_id, get_all_locations, get_single_location, get_single_customer, get_all_customers, get_customer_by_email, get_all_employees, get_single_employee, create_animal, delete_animal, update_animal
 
 
 
@@ -102,6 +102,9 @@ class HandleRequests(BaseHTTPRequestHandler):
             # see if the query dictionary has an email key
             if query.get('email') and resource == 'customers':
                 response = get_customer_by_email(query['email'][0])
+
+            if query.get('location_id') and resource == 'animals':
+                response = get_animal_by_location_id(query['location_id'][0])    
 
         self.wfile.write(json.dumps(response).encode())  
     # Here's a method on the class that overrides the parent's method.
