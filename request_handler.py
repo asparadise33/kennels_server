@@ -1,7 +1,7 @@
 from urllib.parse import urlparse, parse_qs
 from http.server import BaseHTTPRequestHandler, HTTPServer
 import json
-from views import get_all_animals, get_single_animal,get_animal_by_location_id, get_all_locations, get_single_location, get_single_customer, get_all_customers, get_customer_by_email, get_all_employees, get_single_employee, create_animal, delete_animal, update_animal
+from views import get_all_animals, get_single_animal,get_animal_by_location_id, get_all_locations, get_single_location, get_single_customer, get_all_customers, get_customer_by_email, get_all_employees, get_single_employee, delete_employee, create_animal, delete_animal, update_animal
 
 
 
@@ -167,6 +167,9 @@ class HandleRequests(BaseHTTPRequestHandler):
     # Delete a single animal from the list
       if resource == "animals":
         delete_animal(id)
+
+      if resource == "employees":
+        delete_employee(id)  
 
     # Encode the new animal and send in response
       self.wfile.write("".encode())
